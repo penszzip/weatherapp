@@ -11,9 +11,7 @@ form.addEventListener('submit', async function (e) {
         }
 
         const location = input.value;
-        console.log(location)
         const coordinates = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${location}`)
-        console.log(coordinates)
         const { latitude, longitude } = coordinates.data.results[0]
         
         const weather = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`)
